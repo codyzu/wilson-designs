@@ -47,14 +47,9 @@ export default function Home() {
       <div
         className={cx(
           "vw-100 vh-100 overflow-hidden text-center d-flex justify-content-center mw-100",
-          classes.funky
+          classes.funky,
+          classes.hero
         )}
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/alps.jpg")',
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-        }}
       >
         <h1 className="fw-bold d-inline-flex flex-column align-items-center align-self-center">
           <span>Wilson</span>
@@ -62,14 +57,6 @@ export default function Home() {
         </h1>
       </div>
       <Container className="mt-5">
-        {/* <Row className="justify-content-center my-5">
-          <Col xs="auto" className={classes.funky}>
-            <h1 className="fw-bold d-inline-flex flex-column align-items-center">
-              <span>Wilson</span>
-              <span>Designs</span>
-            </h1>
-          </Col>
-        </Row> */}
         <Row className="justify-content-center mb-3">
           <Col xs="auto">
             <h4>Annecy, France</h4>

@@ -65,3 +65,9 @@
   /* --color: var(--white); */
   --index: 2;
 }
+
+.hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/alps.jpg");
+  background-position: center;
+  background-size: cover;
+}
