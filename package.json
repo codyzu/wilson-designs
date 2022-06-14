@@ -6,6 +6,7 @@
     "dev": "vite",
     "predev": "npm run images",
     "build": "vite build",
+    "prebuild": "npm run images",
     "preview": "vite preview",
     "images": "rm -Rf ./src/images && mkdir ./src/images && sharp -i './images/*.jpg' -o ./src/images -p resize 1800"
   },

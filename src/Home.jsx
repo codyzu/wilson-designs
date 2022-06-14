@@ -3,12 +3,22 @@ import { Link, useSearchParams } from "react-router-dom";
 import classes from "./home.module.css";
 import { BsPhone } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
-const imageModules = import.meta.glob("./images/*.jpg");
 
-const images = Object.keys(imageModules)
-  .sort()
-  .reverse()
-  .map((image) => new URL(image, import.meta.url).href);
+const imageModules = import.meta.globEager("./images/*.jpg");
+
+const images = Object.entries(imageModules).sort(([a], [b]) => {
+  if (a < b) {
+    return 1;
+  }
+
+  if (a > b) {
+    return -1;
+  }
+
+  return 0;
+});
+
+console.log("M", images);
 
 export default function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -21,7 +31,7 @@ export default function Home() {
         <Row className="justify-content-center">
           <Col xs="auto">
             <img
-              src={photo}
+              src={imageModules[photo].default}
               className="image-fluid"
               style={{ maxWidth: "100vw", maxHeight: "100vh" }}
             />
@@ -64,20 +74,21 @@ export default function Home() {
         </Col>
       </Row>
       <Row className="g5">
-        {images.map((image) => (
-          <Col key={image} xs={12} sm={6} lg={4} className="p-5">
+        {images.map(([path, module]) => (
+          <Col key={path} xs={12} sm={6} lg={4} className="p-5">
             <a
-              href={`/?${new URLSearchParams({ photo: image }).toString()}`}
+              href={`/?${new URLSearchParams({ photo: path }).toString()}`}
               onClick={(e) => {
                 e.preventDefault();
-                setSearchParams({ photo: image });
+                setSearchParams({ photo: path });
               }}
             >
               <div className="ratio ratio-16x9 justify-content-center">
                 <img
-                  src={image}
+                  src={module.default}
                   className="img-fluid rounded shadow-lg mw-100 mh-100"
                   style={{ objectFit: "cover" }}
+                  loading="lazy"
                 />
               </div>
             </a>
