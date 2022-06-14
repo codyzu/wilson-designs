@@ -4,6 +4,7 @@ import cx from "classnames";
 import classes from "./home.module.css";
 import { BsPhone } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
+import { FaTwitter } from "react-icons/fa";
 
 const imageModules = import.meta.globEager("./images/*.jpg");
 
@@ -100,6 +101,16 @@ export default function Home() {
               </a>
             </Col>
           ))}
+        </Row>
+        <Row className="justify-content-center">
+          <Col xs="auto">
+            <small>
+              Web design by{" "}
+              <a href="https://twitter.com/codyzus">
+                <FaTwitter /> @codyzus
+              </a>
+            </small>
+          </Col>
         </Row>
       </Container>
     </>
