@@ -1,0 +1,46 @@
+name: "CI/CD"
+on:
+  pull_request:
+    types: [opened, synchronize, reopen]
+
+  push:
+    branches:
+      - main
+
+# Cancel any previous CI runs for this branch or PR
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci-cd:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          # Need full checkout in order to push to heroku
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+
+      - name: Output debugging info
+        run: node -v && npm -v
+
+      - name: Install dependencies
+        run: npm ci
+
+      # - name: Format and lint
+      #   # turborepo root scripts don't run for dependsOn pipelines
+      #   # Explicitly run format and lint so that the root scripts run for each
+      #   run: npm run format:all && npm run lint:all
+
+      # - name: Test
+      #   run: npm run test
+
+      - name: Build
+        run: npm run build
