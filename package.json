@@ -1,0 +1,28 @@
+{
+  "name": "wilson-designs",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "predev": "npm run images",
+    "build": "vite build",
+    "preview": "vite preview",
+    "images": "rm -Rf ./src/images && mkdir ./src/images && sharp -i './images/*.jpg' -o ./src/images -p resize 1800"
+  },
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "bootswatch": "^5.1.3",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-icons": "^4.4.0",
+    "react-router-dom": "^6.3.0",
+    "reactstrap": "^9.1.1",
+    "sharp-cli": "^1.15.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@vitejs/plugin-react": "^1.3.0",
+    "vite": "^2.9.9"
+  }
+}
