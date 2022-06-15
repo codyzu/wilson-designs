@@ -9,6 +9,7 @@ import { FaTwitter } from "react-icons/fa";
 const imageModules = import.meta.globEager("./images/*.jpg");
 
 const images = Object.entries(imageModules).sort(([a], [b]) => {
+  // Sort in reverse order
   if (a < b) {
     return 1;
   }
@@ -29,9 +30,9 @@ export default function Home() {
 
   if (photo) {
     return (
-      <Container fluid>
-        <Row className="justify-content-center">
-          <Col xs="auto">
+      <Container fluid className="p-0">
+        <Row className="justify-content-center align-items-center vh-100 mh-100 m-0">
+          <Col xs="auto" className="p-0">
             <img
               src={imageModules[photo].default}
               className="image-fluid"
