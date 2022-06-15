@@ -8,20 +8,20 @@ import { FaTwitter } from "react-icons/fa";
 
 const imageModules = import.meta.globEager("./images/*.jpg");
 
-const images = Object.entries(imageModules).sort(([a], [b]) => {
-  // Sort in reverse order
-  if (a < b) {
-    return 1;
-  }
+const images = new Map(
+  Object.entries(imageModules).sort(([a], [b]) => {
+    // Sort in reverse order
+    if (a < b) {
+      return 1;
+    }
 
-  if (a > b) {
-    return -1;
-  }
+    if (a > b) {
+      return -1;
+    }
 
-  return 0;
-});
-
-console.log("M", images);
+    return 0;
+  })
+);
 
 export default function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -29,19 +29,21 @@ export default function Home() {
   const photo = searchParams.get("photo");
 
   if (photo) {
-    return (
-      <Container fluid className="p-0">
-        <Row className="justify-content-center align-items-center vh-100 mh-100 m-0">
-          <Col xs="auto" className="p-0">
-            <img
-              src={imageModules[photo].default}
-              className="image-fluid"
-              style={{ maxWidth: "100vw", maxHeight: "100vh" }}
-            />
-          </Col>
-        </Row>
-      </Container>
-    );
+    if (images.has(photo)) {
+      return (
+        <Container fluid className="p-0">
+          <Row className="justify-content-center align-items-center vh-100 mh-100 m-0">
+            <Col xs="auto" className="p-0">
+              <img
+                src={images.get(photo).default}
+                className="image-fluid"
+                style={{ maxWidth: "100vw", maxHeight: "100vh" }}
+              />
+            </Col>
+          </Row>
+        </Container>
+      );
+    }
   }
 
   return (
@@ -82,7 +84,7 @@ export default function Home() {
           </Col>
         </Row>
         <Row className="g5">
-          {images.map(([path, module]) => (
+          {Array.from(images.entries(), ([path, module]) => (
             <Col key={path} xs={12} sm={6} lg={4} className="p-5">
               <a
                 href={`/?${new URLSearchParams({ photo: path }).toString()}`}
