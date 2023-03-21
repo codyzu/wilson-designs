@@ -56,8 +56,8 @@ export default function Home() {
         )}
       >
         <h1 className="fw-bold d-inline-flex flex-column align-items-center align-self-center">
-          <span>Wilson</span>
-          <span>Designs</span>
+          <span>Wilson Design Agencement</span>
+          {/* <span>Designs</span> */}
         </h1>
       </div>
       <Container className="mt-5">
