@@ -59,6 +59,8 @@ export default function Home() {
           {/* <span>Wilson Design Agencement</span> */}
           {/* <span>Designs</span> */}
         </h1>
+        <div className={cx("d-inline-flex flex-column align-items-center align-self-center mx-3", classes.logo)}>
+        </div>
       </div>
       <Container className="mt-5">
         <Row className="justify-content-center mb-3">

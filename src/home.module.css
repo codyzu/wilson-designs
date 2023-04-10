@@ -67,7 +67,25 @@
 
 .hero {
   /* background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/cover.jpg"); */
-  background-image: url("/cover.jpg");
+  background-image: url("/cover_base.jpg");
   background-position: center;
   background-size: cover;
+}
+
+.logo {
+  background-image: url("/logo_with_text_cropped.png");
+  filter: brightness(30%);
+
+  aspect-ratio: calc(819 / 429);
+  width: 100vw;
+
+  /* Set the max width and height to match the image */
+  max-width: 819px;
+
+  /* Margin/padding on the height don't work, calculate the max */
+  max-height: calc(100vh - 1rem);
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
