@@ -56,7 +56,7 @@ export default function Home() {
         )}
       >
         <h1 className="fw-bold d-inline-flex flex-column align-items-center align-self-center">
-          <span>Wilson Design Agencement</span>
+          {/* <span>Wilson Design Agencement</span> */}
           {/* <span>Designs</span> */}
         </h1>
       </div>
@@ -68,18 +68,18 @@ export default function Home() {
         </Row>
         <Row className="justify-content-center">
           <Col xs="auto">
-            <a href="tel:+330612345678" className="text-decoration-none">
+            <a href="tel:+330662195686" className="text-decoration-none">
               <BsPhone className="me-2" />
-              +33 6 12 34 56 78
+              +33 06 62 19 56 86
             </a>
           </Col>
           <Col xs="auto">
             <a
-              href="mailto:kevin@wilson-designs.fr"
+              href="mailto:wdagencencement@gmail.com"
               className="text-decoration-none"
             >
               <AiOutlineMail className="me-2" />
-              kevin@wilson-designs.fr
+              wdagencencement@gmail.com
             </a>
           </Col>
         </Row>
